@@ -19,3 +19,27 @@ body {
   border-width: 1px 0;
   background: #666;
 }
+
+.list{
+    overflow: hidden;
+}
+.list-item{
+    display: block;
+    float: left;
+    width: 48%;
+    min-height: 200px;
+    margin: 10px 1%;
+    color: #fff;
+}
+.list-item a{
+  color: #fff;
+  
+}
+@media(min-width: 768px){
+    .list-item{
+      display: block;
+      float: left;
+      width: 18%;
+      margin: 10px 1%;
+  }
+}

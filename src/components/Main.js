@@ -34,7 +34,16 @@ const TodoForm = ({addTodo}) => {
 
 const Todo = ({todo, remove}) => {
   // Each Todo
-  return (<div className="list-item"><h3>{todo.name}</h3><a href="#" onClick={() => {remove(todo.id)}}></a></div>);
+  return (
+		  	<div className="list-item">
+		  		<h3>#{todo.id} {todo.name}</h3>
+		  		<p>{todo.content}</p>
+		  		<p>{todo.author}</p>
+		  		<p>{todo.dev}</p>
+		  		<p>{todo.createdAt}</p>
+		  		<a href="#" onClick={() => {remove(todo.id)}}>Usuń</a>
+		  	</div>
+  		);
 }
 
 const TodoList = ({todos, remove}) => {
@@ -57,7 +66,8 @@ class TodoApp extends React.Component{
       data: []
     }
 
-    //'https://57b1924b46b57d1100a3c3f8.mockapi.io/api/todos'
+    //https://5a088601519b7c0012caab20.mockapi.io/api/v1/react-simple-todo
+    //http://localhost:3000/api/users
     this.apiUrl = 'https://5a088601519b7c0012caab20.mockapi.io/api/v1/react-simple-todo'
   }
   // Lifecycle method
@@ -72,8 +82,12 @@ class TodoApp extends React.Component{
   // Add todo handler
   addTodo(val){
     // Assemble data
-    const todo = {
-    	name: val
+    const todo = { 
+    	name: val,
+    	content: 'lorem ipsum',
+    	author: 'admin',
+    	dev: 'dev1',
+    	createdAt: new Date(),
     }
     // Update data
     axios.post(this.apiUrl, todo)
