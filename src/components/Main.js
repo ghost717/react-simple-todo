@@ -1,8 +1,5 @@
 require('styles/App.css');
-
 import React from 'react';
-
-console.clear();
 
 const Title = ({todoCount}) => {
   return (
@@ -10,6 +7,9 @@ const Title = ({todoCount}) => {
        <div>
           <h1>to-do ({todoCount})</h1>
        </div>
+       <nav>
+
+       </nav>
     </div>
   );
 }
@@ -19,16 +19,16 @@ const TodoForm = ({addTodo}) => {
   let input;
   // Return JSX
   return (
-    <form onSubmit={(e) => {
-        e.preventDefault();
-        addTodo(input.value);
-        input.value = '';
-      }}>
-      <input className="form-control col-md-12" ref={node => {
-        input = node;
-      }} />
-      <br />
-    </form>
+      <form onSubmit={(e) => {
+          e.preventDefault();
+          addTodo(input.value);
+          input.value = '';
+        }}>
+        <input className="form-control col-md-12" ref={node => {
+          input = node;
+        }} />
+        <br />
+      </form>
   );
 };
 
@@ -82,13 +82,7 @@ class TodoApp extends React.Component{
   // Add todo handler
   addTodo(val){
     // Assemble data
-    const todo = { 
-    	name: val,
-    	content: 'lorem ipsum',
-    	author: 'admin',
-    	dev: 'dev1',
-    	createdAt: new Date(),
-    }
+    const todo = { name: val, content: 'lorem ipsum', author: 'admin', dev: 'dev1', createdAt: new Date() }
     // Update data
     axios.post(this.apiUrl, todo)
        .then((res) => {
